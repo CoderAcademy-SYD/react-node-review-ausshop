@@ -5,8 +5,9 @@ const AuthController = require("./../controllers/auth_controller");
 
 router.post("/register", celebrate({
     body: {
-        email: Joi.string().email().trim().required(),
-        password: Joi.string().required()
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+        address: Joi.string().required()
     }
 }), AuthController.register);
 
