@@ -20,9 +20,20 @@ async function getCustomerById(id) {
     return customer;
 }
 
+async function createChargeForCustomer(amount, customer) {
+    const charge = await stripe.charges.create({ amount, customer, currency: "AUD" });
+    return charge;
+}
+
+async function updateCustomer(customer, options) {
+    return await stripe.customers.update(customer, options);
+}
+
 
 module.exports = {
     getCustomerByEmail,
     getCustomerIdByEmail,
-    getCustomerById
+    getCustomerById,
+    createChargeForCustomer,
+    updateCustomer
 }
